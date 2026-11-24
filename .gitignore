@@ -1,0 +1,33 @@
+# Virtual environment
+Env/
+
+# Python bytecode / caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging / build output (PyInstaller etc.)
+build/
+dist/
+*.spec
+*.egg-info/
+*.egg
+.eggs/
+
+# Runtime data and logs (app stores these in %APPDATA%/Pinboard, but just in case)
+board.json
+items/
+*.log
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store
