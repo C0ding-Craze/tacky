@@ -1,3 +1,5 @@
+# Tacky
+
 <p align="center">
   <img src="assets/pin.png" alt="Tacky icon" width="128" height="128">
 </p>
@@ -5,7 +7,7 @@
 <h1 align="center">Tacky</h1>
 
 <p align="center">
-  <em>A tacky that slides down from the top of your screen. Pin text, screenshots, images and files, then grab them again when you need them.</em>
+  <em>A desktop pinboard that slides down from the top of your screen. Pin text, screenshots, images and files, then grab them again whenever you need them.</em>
 </p>
 
 <p align="center">
@@ -24,7 +26,7 @@
 - [Download](#download)
 - [Platform and Requirements](#platform-and-requirements)
 - [Installation](#installation)
-  - [Option 1: Installer (recommended)](#option-1-installer-recommended)
+  - [Option 1: Portable ZIP (recommended)](#option-1-portable-zip-recommended)
   - [Option 2: Run from source](#option-2-run-from-source)
 - [Dependencies](#dependencies)
 - [Usage](#usage)
@@ -42,9 +44,9 @@
 
 ## About
 
-**Tacky** is a lightweight desktop tacky for Windows. It lives in your system tray and stays out of the way until you need it. Move your mouse to the top-centre of the screen (or press a shortcut) and a velvet or cork board slides down, covered in the notes, screenshots and files you pinned earlier.
+**Tacky** is a lightweight desktop pinboard for Windows. It lives in your system tray and stays out of the way until you need it. Move your mouse to the top-centre of the screen or press a shortcut, and a velvet or cork board slides down, displaying the notes, screenshots and files you pinned earlier.
 
-Use it as a scratch space for the things you copy, snip and drag around all day. Anything you pin can be copied back with a click or dragged straight into another app. Unstarred items expire after a week, so the board doesn't turn into a junk drawer.
+Use it as a scratch space for the things you copy, snip and drag around all day. Anything you pin can be copied back with a click or dragged straight into another app. Unstarred items expire after a week, keeping your board organised.
 
 ## Features
 
@@ -62,30 +64,33 @@ Use it as a scratch space for the things you copy, snip and drag around all day.
 
 ## Download
 
-> **[Download the Tacky installer](https://github.com/C0ding-Craze/tacky/releases/latest)**
+[**Download the latest Tacky release**](https://github.com/C0ding-Craze/tacky/releases/latest)
 
-Get the latest `Tacky-Setup.exe` from the [Releases page](https://github.com/C0ding-Craze/tacky/releases).
+Download the latest `Tacky-Windows.zip` from the Assets section of the release.
 
 ## Platform and Requirements
 
 | | |
 |---|---|
 | **Operating system** | Windows 10 or Windows 11 (64-bit) |
-| **Python** (source only) | 3.10 or newer |
+| **Python (source only)** | 3.10 or newer |
 | **Display** | Any resolution. HiDPI scaling is handled. |
 | **Disk space** | Small. Pinned images are stored locally. |
 
-Tacky is built for Windows. The global hotkeys, the screenshot hooks and the *Start with Windows* option rely on Windows APIs, so on other systems they are unavailable.
+Tacky is built for Windows. The global hotkeys, screenshot hooks and **Start with Windows** option rely on Windows APIs, so they are unavailable on other platforms.
 
 ## Installation
 
-### Option 1: Installer (recommended)
+### Option 1: Portable ZIP (recommended)
 
-1. [Download the installer](#download).
-2. Run `Tacky-Setup.exe` and follow the prompts.
-3. Tacky starts in the system tray. Look for the red pin icon near the clock.
+1. [Download the latest ZIP release](https://github.com/C0ding-Craze/tacky/releases/latest).
+2. Extract the downloaded ZIP file to your preferred location.
+3. Open the extracted folder.
+4. Run `Tacky.exe`.
 
-No Python installation is needed for this option.
+Tacky will start in the system tray. Look for the red pin icon near the clock.
+
+No Python installation or additional dependencies are required.
 
 ### Option 2: Run from source
 
@@ -111,21 +116,21 @@ To run without a console window, use `pythonw tacky.py`.
 
 | Package | Purpose |
 |---|---|
-| [**PySide6**](https://pypi.org/project/PySide6/) (Qt 6) | User interface, tray icon, drag and drop, clipboard |
+| [PySide6](https://pypi.org/project/PySide6/) (Qt 6) | User interface, tray icon, drag and drop, clipboard |
 
 Everything else is from the Python standard library (`ctypes`, `winreg`, `json`, `logging`, `pathlib` and so on). Windows APIs are called through `ctypes`, so no extra packages are needed for the hotkeys.
 
 ## Usage
 
-**Showing the board**
+### Showing the board
 
 - Rest your mouse at the **top-centre edge** of the screen for a moment, or
-- press `Win + Alt + S`, or
-- left-click the tray icon.
+- Press `Win + Alt + S`, or
+- Left-click the tray icon.
 
 The board hides itself shortly after your mouse leaves it. Press `Esc` or use the shortcut again to close it right away.
 
-**Adding things**
+### Adding things
 
 | To pin... | Do this |
 |---|---|
@@ -136,14 +141,14 @@ The board hides itself shortly after your mouse leaves it. Press `Esc` or use th
 
 Your previous clipboard contents are restored after `Win + C`, so pinning doesn't disturb whatever you had copied.
 
-**Using what you pinned**
+### Using what you pinned
 
-- **Click** a card to copy it.
+- **Click** a card to copy its content.
 - **Drag** a card into any app to drop the text, image or file there.
 - **Double-click** to open a file or edit a note.
 - **Right-click** for more actions such as Keep, Edit and Unpin.
 
-**Keeping things**
+### Keeping things
 
 Pins older than 4 days start to fade, and they are removed after 7 days. Right-click a card and choose **Keep** to protect it.
 
@@ -177,7 +182,7 @@ If another app already owns one of these shortcuts, Tacky shows a tray notificat
 | Right-click a card | Keep / Unkeep, Copy, Edit or Open, Show in Explorer, Unpin |
 | Right-click the board frame | Clear whole board |
 
-**Note editor**
+### Note editor
 
 | Input | Action |
 |---|---|
@@ -216,46 +221,51 @@ If `board.json` is ever corrupted, Tacky keeps a copy as `board.bad` and starts 
 
 ## Project Structure
 
-```
+```text
 Tacky/
-├── tacky.py             # Entry point
+├── tacky.py              # Entry point
 ├── assets/
-│   ├── pin.ico          # Windows icon
-│   └── pin.png          # App icon
+│   ├── pin.ico           # Windows icon
+│   └── pin.png           # App icon
 └── app/
-    ├── main.py          # App start-up, tray, hotkeys, single-instance lock
-    ├── board/           # The sliding board window, flip animation, textures, artwork
-    ├── cards/           # Card widgets, card faces, card actions (copy, open, drag, remove)
-    ├── core/            # Config, storage, logging, auto-start, memory trimming
-    ├── system/          # Windows hotkeys, clipboard and screenshot capture, tray menu
-    └── ui/              # Theme, icon, painting helpers, note editor, custom widgets
+    ├── main.py           # App start-up, tray, hotkeys, single-instance lock
+    ├── board/            # Sliding board window, animations, textures, artwork
+    ├── cards/            # Card widgets, card faces and card actions
+    ├── core/             # Config, storage, logging, auto-start, memory trimming
+    ├── system/           # Windows hotkeys, clipboard, screenshot capture, tray menu
+    └── ui/               # Theme, icons, painting helpers, note editor, custom widgets
 ```
 
 ## Troubleshooting
 
 **The board doesn't appear when I move the mouse to the top.**
+
 Rest the pointer at the top edge, near the middle of the screen, for a moment. You can also use `Win + Alt + S` or click the tray icon.
 
 **`Win + C` doesn't pin anything.**
+
 Make sure text is selected first. If you see *Nothing selected*, the app didn't respond to the copy command. If Windows or another app already uses `Win + C`, Tacky switches to `Win + Alt + C` and tells you.
 
 **Tacky says a shortcut is already in use.**
+
 Another program has registered the same shortcut. Close it, or use the tray menu instead.
 
 **Something isn't working.**
+
 Check `%APPDATA%\Tacky\tacky.log`.
 
 **Tacky doesn't start a second time.**
+
 Only one copy can run at once. Look for the pin in the tray, and quit it from there if needed.
 
 ## Contributing
 
 Issues and pull requests are welcome. For larger changes, please open an issue first so we can talk it through.
 
-1. Fork the repository
-2. Create a branch: `git checkout -b my-feature`
-3. Commit your changes
-4. Push the branch and open a pull request
+1. Fork the repository.
+2. Create a branch: `git checkout -b my-feature`.
+3. Commit your changes.
+4. Push the branch and open a pull request.
 
 ## License
 
